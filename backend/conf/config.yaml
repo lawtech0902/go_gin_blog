@@ -1,0 +1,40 @@
+---
+app:
+  timeFormat: "2006-01-02 15:04:05"
+  jwtSecret: "blog"
+  tokenTimeout: 28800 # 单位秒，这里是8小时
+  rootBasePath: "runtime"
+  logBasePath: "logs"
+  uploadBasePath: "upload"
+  imageRelPath: "images"
+  avatarRelPath: "avatar"
+  apiBaseUrl: "/api/v1"
+
+server:
+  runMode: "debug"
+  serverAddr: "127.0.0.1:8000"
+  readTimeout: 60
+  writeTimeout: 60
+
+db:
+  mode: "mysql"
+  host: "127.0.0.1"
+  port: "3306"
+  user: "root"
+  password: "12"
+  dbName: "blog"
+
+redis:
+  host: "127.0.0.1"
+  port: "6379"
+  password: "" # 无密码则填写""
+  db: 0
+  cacheTime: 30 # 设置缓存时间，单位秒
+  maxIdle: 20
+  maxActive: 1000
+  idleTimeout: 100
+
+es:
+  host: "127.0.0.1"
+  port: "9200"
+  index: "blog"
