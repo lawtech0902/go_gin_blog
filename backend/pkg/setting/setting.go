@@ -5,6 +5,10 @@ import (
 	"time"
 )
 
+/*
+配置文件解析
+*/
+
 type App struct {
 	TimeFormat     string `json:"time_format"`
 	JwtSecret      string `json:"jwt_secret"`
@@ -58,7 +62,7 @@ var (
 	ESInfo     *ES
 )
 
-func Setup() {
+func init() {
 	viper.AddConfigPath("conf")
 	viper.SetConfigName("config")
 	viper.SetConfigType("yaml")
@@ -76,14 +80,14 @@ func Setup() {
 		UploadBasePath: viper.GetString("app.uploadBasePath"),
 		ImageRelPath:   viper.GetString("app.imageRelPath"),
 		AvatarRelPath:  viper.GetString("app.avatarRelPath"),
-		ApiBaseUrl:     viper.GetString("apiBaseUrl"),
+		ApiBaseUrl:     viper.GetString("app.apiBaseUrl"),
 	}
 	
 	ServerInfo = &Server{
 		RunMode:      viper.GetString("server.runMode"),
 		ServerAddr:   viper.GetString("server.serverAddr"),
-		ReadTimeout:  time.Duration(viper.GetInt64("server.readTimeout")),
-		WriteTimeout: time.Duration(viper.GetInt64("server.writeTimeout")),
+		ReadTimeout:  time.Duration(viper.GetInt64("server.readTimeout")) * time.Second,
+		WriteTimeout: time.Duration(viper.GetInt64("server.writeTimeout")) * time.Second,
 	}
 	
 	DBInfo = &DB{

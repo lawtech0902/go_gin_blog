@@ -44,6 +44,15 @@ var MsgFlags = map[int]string{
 	
 	CommentGetAllError: "获取所有评论失败",
 	SearchArticleError: "搜索文章失败",
+	CommentGetError:    "评论获取失败",
+	CommentDeleteError: "删除评论失败",
+	
+	SoupGetAllError:  "获取所有鸡汤失败",
+	SoupCreateError:  "添加鸡汤失败",
+	SoupGetError:     "鸡汤获取失败",
+	SoupDeleteError:  "删除鸡汤失败",
+	SoupEditError:    "编辑鸡汤失败",
+	SoupGetRandError: "随机获取鸡汤失败",
 }
 
 func GetMsg(code int) string {

@@ -5,32 +5,27 @@ import (
 	"github.com/elastic/go-elasticsearch/v8"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/gomodule/redigo/redis"
+	"github.com/jmoiron/sqlx"
 	"github.com/lawtech0902/go_gin_blog/backend/pkg/setting"
 	"time"
-	"xorm.io/xorm"
 )
 
 var (
-	DB        *xorm.Engine
+	DB        *sqlx.DB
 	RedisConn *redis.Pool
 	ESConn    *elasticsearch.Client
 	err       error
 )
 
-func Setup() {
+func init() {
 	// setup mysql
-	DB, err = xorm.NewEngine(setting.DBInfo.Mode, fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8mb4",
+	DB = sqlx.MustConnect(setting.DBInfo.Mode, fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8mb4",
 		setting.DBInfo.User,
 		setting.DBInfo.Password,
 		setting.DBInfo.Host,
 		setting.DBInfo.Port,
 		setting.DBInfo.DBName))
 	
-	if err != nil {
-		panic(err)
-	}
-	
-	DB.ShowSQL(true)
 	DB.SetMaxIdleConns(10)
 	DB.SetMaxOpenConns(100)
 	

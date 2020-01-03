@@ -5,6 +5,10 @@ import (
 	"github.com/lawtech0902/go_gin_blog/backend/pkg/e"
 )
 
+/*
+定制响应
+*/
+
 type Response struct {
 	Code int         `json:"code"`
 	Msg  string      `json:"msg"`

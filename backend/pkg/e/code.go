@@ -1,5 +1,9 @@
 package e
 
+/*
+错误码定制
+*/
+
 const (
 	Success = 20000
 	Error   = 50000
@@ -45,4 +49,13 @@ const (
 	
 	CommentGetAllError = 40032
 	SearchArticleError = 40033
+	CommentGetError    = 40034
+	CommentDeleteError = 40035
+	
+	SoupGetAllError = 40036
+	SoupCreateError = 40037
+	SoupGetError    = 40038
+	SoupDeleteError = 40039
+	SoupEditError   = 40040
+	SoupGetRandError = 40041
 )

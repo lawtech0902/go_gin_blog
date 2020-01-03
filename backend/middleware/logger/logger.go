@@ -28,7 +28,7 @@ var (
 func CustomLogger() gin.HandlerFunc {
 	gin.DisableConsoleColor()
 	
-	file, err = os.OpenFile(getLogFileFullPath(), os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0644)
+	file, err = os.OpenFile(GetLogFileFullPath("gin"), os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0644)
 	if err != nil {
 		panic(err)
 	}
@@ -74,11 +74,12 @@ func CloseLogFile() {
 	}
 }
 
-func getLogFileFullPath() string {
-	return path.Join(setting.AppInfo.RootBasePath, setting.AppInfo.LogBasePath, getLogFileName())
+func GetLogFileFullPath(prefix string) string {
+	return path.Join(setting.AppInfo.RootBasePath, setting.AppInfo.LogBasePath, GetLogFileName(prefix))
 }
 
-func getLogFileName() string {
-	return fmt.Sprintf("gin_blog_log_%s.log",
+func GetLogFileName(prefix string) string {
+	return fmt.Sprintf("%s_%s.log",
+		prefix,
 		time.Now().Format(strings.Split(setting.AppInfo.TimeFormat, " ")[0]))
 }

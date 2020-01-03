@@ -1,7 +1,7 @@
 ---
 app:
   timeFormat: "2006-01-02 15:04:05"
-  jwtSecret: "blog"
+  jwtSecret: "Rtg8BPKNEf2mB4mgvKONGPZZQSaJWNLijxR42qRgq0iBb5"
   tokenTimeout: 28800 # 单位秒，这里是8小时
   rootBasePath: "runtime"
   logBasePath: "logs"
