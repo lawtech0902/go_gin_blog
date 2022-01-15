@@ -19,7 +19,7 @@
     "element-ui": "2.7.2",
     "highlight.js": "^9.15.10",
     "js-cookie": "2.2.0",
-    "marked": "^0.7.0",
+    "marked": "^4.0.10",
     "node-sass": "^4.13.0",
     "normalize.css": "7.0.0",
     "nprogress": "0.2.0",
